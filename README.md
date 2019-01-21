@@ -1,2 +1,2 @@
-# NDD430
-Seneca NDD430 Various Scripts and Repos
+# NDD430 - IpTables
+IPTables Scripts for the various Labs and Assignments we're doing
