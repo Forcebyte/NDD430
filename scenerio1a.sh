@@ -52,8 +52,8 @@
 			
 
 			# Allow DHCP Forwarding only to WinServ and the Client (Specified via interface)
-			iptables -A FORWARD -i ens33 -p udp --dport 67:68 --sport 67:68 --state NEW,ESTABLISHED,RELATED -j accept-forward
-			iptables -A FORWARD -i ens37 -p udp --dport 67:68 --sport 67:68 --state NEW,ESTABLISHED,RELATED -j accept-forward
+			iptables -A FORWARD -i ens33 -p udp --dport 67:68 --sport 67:68 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+			iptables -A FORWARD -i ens37 -p udp --dport 67:68 --sport 67:68 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
 			
 
 			# Allow SSH/SCP Traffic to and from Router
@@ -98,7 +98,7 @@
 			
 			# Allow IIS forwarding (custom port)
 			iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 2424 -m state --state NEW,RELATED,ESTABLISHED -j accept-forward
-			iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 2424 -m state --state NEW,RELATED,ESTABLSIHED -j accept-forward
+			iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 2424 -m state --state NEW,RELATED,ESTABLISHED -j accept-forward
 
 			# Allow Incoming/Outgoing DNS forwarding requests
 				#UDP
