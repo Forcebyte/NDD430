@@ -42,11 +42,11 @@
     iptables -A drop-forward -j DROP
     # -------
 
-    #- Scenerio A -#  
+    #- Scenerio B -#  
     #Configures your firewall to log all traffic and allow only traffic for 
     #services specified in the “Network Standards and Specifications Part 2” document.  
 
-    #All other traffic will be dropped INBOUND.
+    #All other traffic will be dropped OUTBOUND.
     #All accepted traffic must be sourced from your client’s subnet
     #All accepted traffic must be part of a NEW, ESTABLISHED or RELATED session
 
