@@ -124,4 +124,6 @@
     iptables -A OUTPUT -o lo -j ACCEPT
 
     #List new IPTABLES
-    iptables -L -n
+    iptables -L INPUT
+    iptables -L OUTPUT
+    iptables -L FORWARD
