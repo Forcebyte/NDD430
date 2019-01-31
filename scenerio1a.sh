@@ -52,8 +52,9 @@
 			
 
 			# Allow DHCP Forwarding only to WinServ and the Client (Specified via interface)
-			iptables -A FORWARD -i ens33 -p udp --dport 67:68 --sport 67:68 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
-			iptables -A FORWARD -i ens37 -p udp --dport 67:68 --sport 67:68 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+			iptables -A INPUT -p udp --dport 67:68 --sport 67:68 -j accept-forward
+			iptables -A OUTPUT -p udp --dport 67:68 --sport 67:68 -j accept-forward 
+			iptables -A FORWARD -p udp --dport 67:68 --sport 67:68 -j accept-forward
 			
 
 			# Allow SSH/SCP Traffic to and from Router
@@ -125,4 +126,6 @@
 		  
 			
 			#List new IPTABLES
-			iptables -L -n
+			iptables -L INPUT
+			iptables -L OUTPUT
+			iptables -L FORWARD
