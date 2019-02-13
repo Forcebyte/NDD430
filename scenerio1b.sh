@@ -73,12 +73,16 @@
     iptables -A FORWARD -p tcp -d 195.165.52.0/26  --sport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
 
     # Allow hMail to have access to IMAP and SMTP traffic
-      #IMAP
+        #IMAP
     iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 143 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
     iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 143 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
-      #SMTP
+        #SMTP
     iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 25 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
     iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 25 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+        #SMTP
+    iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 587 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+    iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 587 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+
 
     # Allow FTP (Filezilla, Unencrypted) Traffic
     iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 20:21 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
