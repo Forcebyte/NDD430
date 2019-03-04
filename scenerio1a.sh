@@ -117,8 +117,8 @@
 			#iptables -A FORWARD -p ICMP -j ACCEPT
 			
 			# Now that everything is defined from the destination or source port, 
-			# we can now deny all other	traffic unrelated at the OUTBOUND sector (E.g. incoming from Winserv or Lnxserv)
-			iptables -A FORWARD -j drop-forward
+			# we can now deny all other	traffic unrelated at the INBOUND sector (E.g. incoming from the Client)
+			iptables -A FORWARD -d -j drop-forward
  			iptables -A INPUT -j drop-input
 			iptables -A OUTPUT -j drop-output
 
