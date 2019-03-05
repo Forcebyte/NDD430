@@ -1,4 +1,4 @@
-    #!/bin/bash
+ #!/bin/bash
 
     #Flush Tables, Set Forward to Drop and everything else to accept
 
@@ -43,12 +43,11 @@
     # -------
 
     #- Scenerio 4 -#  
-    #Configures your firewall to only allow the following services
-        #SCP
-        #FTP
-        #DHCP
-        #DNS
-
+    #Allow only the following
+    #SCP
+    #FTP
+    #DHCP
+    #DNS
 
     # Allow DHCP Forwarding only to WinServ and the Client (Specified via interface)
     iptables -A FORWARD -i ens33 -p udp --dport 67:68 --sport 67:68 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
@@ -68,8 +67,8 @@
     #iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 3737 -m state --state NEW,RELATED,ESTABLISHED -j accept-forward
     #iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 3737 -m state --state NEW,RELATED,ESTABLISHED -j accept-forward
       #SCP Traffic
-    #iptables -A FORWARD -p tcp -s 195.165.52.0/26  --dport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
-    #iptables -A FORWARD -p tcp -d 195.165.52.0/26  --sport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+    iptables -A FORWARD -p tcp -s 195.165.52.0/26  --dport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+    iptables -A FORWARD -p tcp -d 195.165.52.0/26  --sport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
 
     # Allow hMail to have access to IMAP and SMTP traffic
         #IMAP
@@ -92,8 +91,8 @@
     #iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 3306 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
 
     # Allow Tracert forwarding 
-    #iptables -A FORWARD -p udp -s 195.165.52.0/26 --dport 33434:33534 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
-    #iptables -A FORWARD -p udp -d 195.165.52.0/26 --sport 33434:33534 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+    iptables -A FORWARD -p udp -s 195.165.52.0/26 --dport 33434:33534 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+    iptables -A FORWARD -p udp -d 195.165.52.0/26 --sport 33434:33534 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
 
     # Allow Apache forwarding (custom port)
     #iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 4242 -m state --state NEW,RELATED,ESTABLISHED -j accept-forward
@@ -118,7 +117,7 @@
 
     # Now that everything is defined from the destination or source port, 
     # we can now deny all other	traffic unrelated at the OUTBOUND sector (E.g. incoming from Winserv or Lnxserv)
-    iptables -A FORWARD -j drop-forward
+    iptables -A FORWARD -d 195.165.52.0/26 -j drop-forward
     iptables -A INPUT -j drop-input
     iptables -A OUTPUT -j drop-output
 
@@ -130,10 +129,3 @@
     iptables -L INPUT
     iptables -L OUTPUT
     iptables -L FORWARD
-
-        echo "- Scenerio 4 - "
-        echo "Configures your firewall to connect to everything BUT"
-        echo "SCP"
-        echo "Unencrypted FTP"
-        echo "DHCP"
-        echo "DNS"
