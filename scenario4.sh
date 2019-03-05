@@ -68,8 +68,8 @@
     #iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 3737 -m state --state NEW,RELATED,ESTABLISHED -j accept-forward
     #iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 3737 -m state --state NEW,RELATED,ESTABLISHED -j accept-forward
       #SCP Traffic
-    iptables -A FORWARD -p tcp -s 195.165.52.0/26  --dport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
-    iptables -A FORWARD -p tcp -d 195.165.52.0/26  --sport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+    #iptables -A FORWARD -p tcp -s 195.165.52.0/26  --dport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
+    #iptables -A FORWARD -p tcp -d 195.165.52.0/26  --sport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
 
     # Allow hMail to have access to IMAP and SMTP traffic
         #IMAP
