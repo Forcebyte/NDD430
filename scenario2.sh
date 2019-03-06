@@ -141,3 +141,14 @@ iptables -A FORWARD -p tcp --sport 53 -j accept-forward
 	iptables -L INPUT
 	iptables -L OUTPUT
 	iptables -L FORWARD
+
+# Echo back the Scenerio
+echo "====================================================="
+echo "                 - Scenerio 2 -                      "
+echo "   Configures your firewall to connect to ONLY       "
+echo "				  DHCP								   "
+echo "				  DNS								   "
+echo "				  SSH To the Router					   "
+echo "				  IIS Web Server					   "
+echo "				  MySQL Web Server                 	   "
+echo "====================================================="

@@ -135,7 +135,9 @@ iptables -L INPUT
 iptables -L OUTPUT
 iptables -L FORWARD
 
-echo "- Scenerio 3 - "
+# Echo back the Scenerio
+echo "====================================================="
+echo "                 - Scenerio 3 -                      "
 echo "Configures your firewall to connect to everything BUT"
-echo "SSH To the router"
-
+echo "				  SSH To the Router                    "
+echo "====================================================="
