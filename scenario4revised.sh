@@ -90,14 +90,14 @@ iptables -P FORWARD DROP
 
 # Allow FTP SC4 (Filezilla, Unencrypted) Traffic
 	iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 20:21 -j accept-forward
-	iptables -A FORWARD -p tcp -s 195.165.52.0/26 --sport 20:21 -j accept-forward
+	iptables -A FORWARD -p tcp -s 195.165.52.69/26 --sport 20:21 -j accept-forward
 	iptabels -A FORWARD -p tcp -d 195.165.52.0/26 --dport 20:21 -j accept-forward
-	iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 20:21 -j accept-forward
+	iptables -A FORWARD -p tcp -d 195.165.52.69/26 --sport 20:21 -j accept-forward
 	
 
 # Disable MySQL Traffic
 	iptables -A FORWARD -p tcp -s 195.165.52.0/26 --dport 3306 -m state --state NEW,ESTABLISHED,RELATED -j drop-forward
-	iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 3306 -m state --state NEW,ESTABLISHED,RELATED -j drp[-forward
+	iptables -A FORWARD -p tcp -d 195.165.52.0/26 --sport 3306 -m state --state NEW,ESTABLISHED,RELATED -j drop-forward
 
 # Allow Tracert forwarding (Mainly for testing)
 	iptables -A FORWARD -p udp -s 195.165.52.0/26 --dport 33434:33534 -m state --state NEW,ESTABLISHED,RELATED -j accept-forward
