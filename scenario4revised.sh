@@ -62,7 +62,7 @@ iptables -P FORWARD DROP
 # SSH
 	# Allow SSH/SCP Traffic to and from Router
 	   # DONT ALLOW SSH TRAFFIC
-		iptables -A INPUT -p tcp -s 195.165.52.0/26 --dport 3737 -m state --state NEW,ESTABLISHED,RELATED -j drop-input
+		iptables -A INPUT -p tcp -s 195.165.52.0/26 --dport 3737 -m state --state NEW,ESTABLISHED,RELATED -j accept-input
 		iptables -A OUTPUT -p tcp -d 195.165.52.0/26 --sport 3737 -m state --state NEW,RELATED,ESTABLISHED -j drop-output
 	   # Allow SCP Traffic
 		iptables -A INPUT -p tcp -s 195.165.52.0/26  --dport 7373 -m state --state NEW,ESTABLISHED,RELATED -j accept-input
