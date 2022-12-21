@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Used for Seneca CDOT in 2019, I believe for DCN286
+
 # Flush Tables, Set Forward to Drop and everything else to accept
 iptables -F
 iptables -X
